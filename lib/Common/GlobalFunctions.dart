@@ -41,6 +41,10 @@ void RestartScreenHotRestart(BuildContext context) {
   (context as Element).reassemble();
 }
 
+Size getSize(BuildContext context) {
+  return MediaQuery.of(context).size;
+}
+
 Future<String> GetVersion() async {
   var file = await rootBundle.loadString("pubspec.yaml");
   var yaml = loadYaml(file);
