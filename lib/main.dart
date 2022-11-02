@@ -11,6 +11,5 @@ Future main() async {
     DeviceOrientation.portraitDown,
   ]);
 
-
   runApp(MaterialApp(debugShowCheckedModeBanner: false, home: HomeScreen()));
 }

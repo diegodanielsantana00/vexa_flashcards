@@ -1,4 +1,4 @@
-// ignore_for_file: non_constant_identifier_names, file_names, prefer_const_constructors
+// ignore_for_file: non_constant_identifier_names, file_names, prefer_const_constructors, invalid_use_of_protected_member
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -49,4 +49,19 @@ Future<String> GetVersion() async {
   var file = await rootBundle.loadString("pubspec.yaml");
   var yaml = loadYaml(file);
   return yaml["version"];
+}
+
+Widget widgetVersionText() {
+  return FutureBuilder<String>(
+    future: GetVersion(),
+    builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
+      if (snapshot.hasData) {
+        return Text("Versão: ${snapshot.data?.split('+')[0]}");
+      } else if (snapshot.hasError) {
+        return SizedBox();
+      } else {
+        return SizedBox();
+      }
+    },
+  );
 }

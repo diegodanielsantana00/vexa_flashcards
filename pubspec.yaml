@@ -40,6 +40,7 @@ dependencies:
   path_provider: ^2.0.11
   intl: ^0.17.0
   yaml: ^3.1.1
+  shrink_sidemenu: ^2.0.0+2-null-safety
 
 
 dev_dependencies:
