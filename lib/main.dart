@@ -10,8 +10,6 @@ Future main() async {
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
   ]);
-  // MobileAds.instance.initialize();
-
 
   runApp(MaterialApp(debugShowCheckedModeBanner: false, home: HomeScreen()));
 }
