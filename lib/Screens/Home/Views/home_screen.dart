@@ -1,9 +1,10 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:vexa_flashcards/Common/GlobalFunctions.dart';
 import 'package:vexa_flashcards/Common/Navigator.dart';
 import 'package:vexa_flashcards/Screens/Home/Widgets/home_widget.dart';
-import 'package:vexa_flashcards/Screens/Metter/Views/add_metter.dart';
+import 'package:vexa_flashcards/Screens/Matter/Views/add_matter.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -23,11 +24,12 @@ class _HomeScreenState extends State<HomeScreen> {
         leading: IconButton(onPressed: () => scaffoldKey.currentState?.openDrawer(), icon: Icon(Icons.menu_outlined, color: Colors.black)),
         shadowColor: Colors.transparent,
         backgroundColor: Colors.transparent,
-        title: Text("Cartões", style: TextStyle(color: Colors.black)),
+        title: Text("Matérias", style: TextStyle(color: Colors.black)),
         actions: [
           IconButton(
-              onPressed: () {
-                NavigatorController().navigatorToReturn(context, AddMetter());
+              onPressed: () async {
+                await NavigatorController().navigatorToReturn(context, AddMetter());
+                RestartScreenHotRestart(context);
               },
               icon: Icon(
                 Icons.add,

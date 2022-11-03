@@ -5,7 +5,7 @@ import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:vexa_flashcards/Common/GlobalFunctions.dart';
-import 'package:vexa_flashcards/Screens/Home/Models/Matter.dart';
+import 'package:vexa_flashcards/Screens/Matter/Models/Matter.dart';
 
 class DatabaseHelper {
   static DatabaseHelper? _databaseHelper;
@@ -25,7 +25,7 @@ class DatabaseHelper {
   }
 
   void _createDatabase(Database db, int version) async {
-    await db.execute("CREATE TABLE matter(id INTEGER primary key autoincrement, title TEXT, color TEXT, icon TEXT);");
+    await db.execute("CREATE TABLE matter(id INTEGER primary key autoincrement, title TEXT, color TEXT, icon TEXT, memory INTEGER);");
     await db.execute("CREATE TABLE card(id INTEGER primary key autoincrement, id_matter INTEGER, question TEXT, answer TEXT);");
     await db.execute("CREATE TABLE version(id INTEGER primary key autoincrement, version TEXT);");
 

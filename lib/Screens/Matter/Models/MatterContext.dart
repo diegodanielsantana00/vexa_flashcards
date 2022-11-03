@@ -2,7 +2,7 @@
 
 
 import 'package:vexa_flashcards/Common/SQLiteHelper.dart';
-import 'package:vexa_flashcards/Screens/Home/Models/Matter.dart';
+import 'package:vexa_flashcards/Screens/Matter/Models/Matter.dart';
 
 class MatterContext {
   Future<List<Matter>> GetTask() async {
