@@ -2,8 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:vexa_flashcards/Common/GlobalFunctions.dart';
-import 'package:vexa_flashcards/Screens/Home/Models/Matter.dart';
-import 'package:vexa_flashcards/Screens/Home/Models/MatterContext.dart';
+import 'package:vexa_flashcards/Screens/Matter/Models/Matter.dart';
+import 'package:vexa_flashcards/Screens/Matter/Models/MatterContext.dart';
 
 class HomeWidget {
   
@@ -57,8 +57,8 @@ class HomeWidget {
         itemBuilder: (context, index) {
           return Container(
               margin: const EdgeInsets.only(bottom: 10),
-              height: 120,
-              decoration: BoxDecoration(color: Colors.green, borderRadius: BorderRadius.circular(20)),
+              height: 100,
+              decoration: BoxDecoration(color: StringToColor(listMatter[index].color??""), borderRadius: BorderRadius.circular(20)),
               child: Center(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -68,7 +68,7 @@ class HomeWidget {
                         child: Text(listMatter[index].title??"", textAlign: TextAlign.center, style: TextStyle(fontSize: 17, fontWeight: FontWeight.w600, color: Colors.white))),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text("Progresso: 11/65", textAlign: TextAlign.center, style: TextStyle(fontSize: 17, fontWeight: FontWeight.w300, color: Colors.white)),
+                      child: Text("Memorizados: ${listMatter[index].memory??0}/65", textAlign: TextAlign.center, style: TextStyle(fontSize: 17, fontWeight: FontWeight.w300, color: Colors.white)),
                     )
                   ],
                 ),

@@ -9,7 +9,7 @@ String GetNameMonth(int month) {
   return months[month - 1];
 }
 
-ButtonStyle styleButtonDefaut(Color color) {
+ButtonStyle styleButtonDefaut(Color? color) {
   return TextButton.styleFrom(
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(20.0),
