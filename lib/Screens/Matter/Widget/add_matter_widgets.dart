@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:vexa_flashcards/Common/GlobalFunctions.dart';
 import 'package:vexa_flashcards/Common/Navigator.dart';
+import 'package:vexa_flashcards/Screens/Card/Widgets/add_card_widgets.dart';
+import 'package:vexa_flashcards/Screens/Home/Models/Cards.dart';
 
 class AddMatterWigdet {
   TextEditingController titleEditingController = TextEditingController();
@@ -10,6 +12,7 @@ class AddMatterWigdet {
   Color? selectColorOption = Colors.green[900];
   String colorString = Colors.green[900].toString();
   bool boolValidationTitle = true;
+  AddCardWidgets addCardWidgets = AddCardWidgets();
 
   Widget TitleTextField(BuildContext context) {
     return Row(
@@ -132,66 +135,19 @@ class AddMatterWigdet {
 
   Widget AddCardbutton(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        showDialog(
-                context: context,
-                builder: (BuildContext context) {
-                  return AlertDialog(
-                    content: Stack(
-                      //overflow: Overflow.visible,
-                      children: <Widget>[
-                        Positioned(
-                          right: -40.0,
-                          top: -40.0,
-                          child: InkResponse(
-                            onTap: () {
-                              Navigator.of(context).pop();
-                            },
-                            child: CircleAvatar(
-                              child: Icon(Icons.close),
-                              backgroundColor: Colors.red,
-                            ),
-                          ),
-                        ),
-                        Form(
-                          //key: _formKey,
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: <Widget>[
-                              Padding(
-                                padding: EdgeInsets.all(8.0),
-                                child: TextFormField(),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.all(8.0),
-                                child: TextFormField(),
-                              ),
-                              // Padding(
-                              //   padding: const EdgeInsets.all(8.0),
-                              //   child: RaisedButton(
-                              //     child: Text("Submitß"),
-                              //     onPressed: () {
-                              //       if (_formKey.currentState.validate()) {
-                              //         _formKey.currentState.save();
-                              //       }
-                              //     },
-                              //   ),
-                              // )
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  );
-                });
+      onTap: () async {
+        Cards cardAux = await addCardWidgets.modalAddWidget(context);
+        print(cardAux.question);
       },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
+        // ignore: prefer_const_literals_to_create_immutables
         children: [
           Padding(
-            padding: const EdgeInsets.only(right: 8.0),
+            padding: EdgeInsets.only(right: 8.0),
             child: Icon(Icons.add),
-          ), Text("Adicionar um cartão")
+          ),
+          Text("Adicionar um cartão")
         ],
       ),
     );
