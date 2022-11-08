@@ -2,7 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:vexa_flashcards/Common/GlobalFunctions.dart';
-import 'package:vexa_flashcards/Common/Navigator.dart';
+import 'package:vexa_flashcards/Screens/Card/Widgets/add_card_widgets.dart';
+import 'package:vexa_flashcards/Screens/Home/Models/Cards.dart';
 
 class AddMatterWigdet {
   TextEditingController titleEditingController = TextEditingController();
@@ -10,6 +11,8 @@ class AddMatterWigdet {
   Color? selectColorOption = Colors.green[900];
   String colorString = Colors.green[900].toString();
   bool boolValidationTitle = true;
+  AddCardWidgets addCardWidgets = AddCardWidgets();
+  List<Cards> listCards = [];
 
   Widget TitleTextField(BuildContext context) {
     return Row(
@@ -82,7 +85,7 @@ class AddMatterWigdet {
                       textAlign: TextAlign.center, style: TextStyle(fontSize: 17, fontWeight: FontWeight.w600, color: Colors.white))),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Text("Cartas: 0", textAlign: TextAlign.center, style: TextStyle(fontSize: 17, fontWeight: FontWeight.w300, color: Colors.white)),
+                child: Text("Cartas: ${listCards.length}", textAlign: TextAlign.center, style: TextStyle(fontSize: 17, fontWeight: FontWeight.w300, color: Colors.white)),
               )
             ],
           ),
@@ -132,66 +135,20 @@ class AddMatterWigdet {
 
   Widget AddCardbutton(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        showDialog(
-                context: context,
-                builder: (BuildContext context) {
-                  return AlertDialog(
-                    content: Stack(
-                      //overflow: Overflow.visible,
-                      children: <Widget>[
-                        Positioned(
-                          right: -40.0,
-                          top: -40.0,
-                          child: InkResponse(
-                            onTap: () {
-                              Navigator.of(context).pop();
-                            },
-                            child: CircleAvatar(
-                              child: Icon(Icons.close),
-                              backgroundColor: Colors.red,
-                            ),
-                          ),
-                        ),
-                        Form(
-                          //key: _formKey,
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: <Widget>[
-                              Padding(
-                                padding: EdgeInsets.all(8.0),
-                                child: TextFormField(),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.all(8.0),
-                                child: TextFormField(),
-                              ),
-                              // Padding(
-                              //   padding: const EdgeInsets.all(8.0),
-                              //   child: RaisedButton(
-                              //     child: Text("Submitß"),
-                              //     onPressed: () {
-                              //       if (_formKey.currentState.validate()) {
-                              //         _formKey.currentState.save();
-                              //       }
-                              //     },
-                              //   ),
-                              // )
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  );
-                });
+      onTap: () async {
+        Cards cardAux = await addCardWidgets.modalAddWidget(context);
+        listCards.add(cardAux);
+        RestartScreenHotRestart(context);
       },
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
+        // ignore: prefer_const_literals_to_create_immutables
         children: [
           Padding(
-            padding: const EdgeInsets.only(right: 8.0),
+            padding: EdgeInsets.only(right: 8.0),
             child: Icon(Icons.add),
-          ), Text("Adicionar um cartão")
+          ),
+          Text("Adicionar um cartão")
         ],
       ),
     );
@@ -205,6 +162,34 @@ class AddMatterWigdet {
         child: ElevatedButton(
             style: styleButtonDefaut(Colors.green[700]), onPressed: function, child: Text("Adicionar", style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700, color: Colors.white))),
       ),
+    );
+  }
+
+  Widget BuildCards(BuildContext context) {
+    return Column(
+      children: [
+        SizedBox(height: 8),
+        for (var i = 0; i < listCards.length; i++)
+          Padding(
+            padding: const EdgeInsets.only(left: 8, right: 8),
+            child: Container(
+              margin: const EdgeInsets.only(bottom: 10),
+              height: 30,
+              decoration: BoxDecoration(color: selectColorOption, borderRadius: BorderRadius.circular(20)),
+              child: Padding(
+                padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("${listCards[i].question!.length > 22 ? "...${listCards[i].question!.substring(listCards[i].question!.length-22, listCards[i].question!.length)}" : listCards[i].question}",
+                        style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w400)),
+                    Text("${i + 1}º", style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w400))
+                  ],
+                ),
+              ),
+            ),
+          ),
+      ],
     );
   }
 }

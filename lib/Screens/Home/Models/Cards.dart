@@ -1,6 +1,6 @@
 // ignore_for_file: non_constant_identifier_names, file_names
-class Card {
-  Card({this.id, this.id_matter, this.question, this.answer});
+class Cards {
+  Cards({this.id, this.id_matter, this.question, this.answer});
 
   int? id;
   int? id_matter;
@@ -17,7 +17,7 @@ class Card {
     return map;
   }
 
-  Card.fromMap(Map<String, dynamic> map) {
+  Cards.fromMap(Map<String, dynamic> map) {
     id = map['id'];
     id_matter = map['id_matter'];
     question = map['question'];

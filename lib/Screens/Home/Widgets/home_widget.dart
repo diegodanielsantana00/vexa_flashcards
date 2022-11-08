@@ -68,7 +68,7 @@ class HomeWidget {
                         child: Text(listMatter[index].title??"", textAlign: TextAlign.center, style: TextStyle(fontSize: 17, fontWeight: FontWeight.w600, color: Colors.white))),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text("Memorizados: ${listMatter[index].memory??0}/65", textAlign: TextAlign.center, style: TextStyle(fontSize: 17, fontWeight: FontWeight.w300, color: Colors.white)),
+                      child: Text("Memorizados: ${listMatter[index].memory??0}/${listMatter[index].listCards!.length}", textAlign: TextAlign.center, style: TextStyle(fontSize: 17, fontWeight: FontWeight.w300, color: Colors.white)),
                     )
                   ],
                 ),

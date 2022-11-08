@@ -5,6 +5,7 @@ import 'dart:io';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:vexa_flashcards/Common/GlobalFunctions.dart';
+import 'package:vexa_flashcards/Screens/Home/Models/Cards.dart';
 import 'package:vexa_flashcards/Screens/Matter/Models/Matter.dart';
 
 class DatabaseHelper {
@@ -90,6 +91,12 @@ class DatabaseHelper {
     Database db = await database;
     var result = await db.query("matter");
     return result.isNotEmpty ? result.map((c) => Matter.fromMap(c)).toList() : [];
+  }
+
+    Future<List<Cards>> getCard(int id_metter) async {
+    Database db = await database;
+    var result = await db.query("card", where: "id_matter = $id_metter");
+    return result.isNotEmpty ? result.map((c) => Cards.fromMap(c)).toList() : [];
   }
 
   Future<String> getLastVersion() async {
