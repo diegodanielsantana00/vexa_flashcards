@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
 import 'package:vexa_flashcards/Common/GlobalFunctions.dart';
@@ -33,37 +33,36 @@ class AddCardWidgets {
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     TextFormField(
-                      decoration: InputDecoration(
-                        // errorBorder: OutlineInputBorder(
-                        //   borderSide: BorderSide(
-                        //     color: Colors.red,
-                        //   ),
-                        //   borderRadius: BorderRadius.circular(10.0),
-                        // ),
-                        disabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Colors.grey[600] ?? Colors.grey,
+                        decoration: InputDecoration(
+                          // errorBorder: OutlineInputBorder(
+                          //   borderSide: BorderSide(
+                          //     color: Colors.red,
+                          //   ),
+                          //   borderRadius: BorderRadius.circular(10.0),
+                          // ),
+                          disabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.grey[600] ?? Colors.grey,
+                            ),
+                            borderRadius: BorderRadius.circular(10.0),
                           ),
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Colors.black,
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.black,
+                            ),
+                            borderRadius: BorderRadius.circular(10.0),
                           ),
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                            color: Colors.black,
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Colors.black,
+                            ),
+                            borderRadius: BorderRadius.circular(10.0),
                           ),
-                          borderRadius: BorderRadius.circular(10.0),
+                          hintText: "Pergunta",
+                          //errorText: errorQuestion ? "Ooops, something is not right!" : "",
+                          //errorStyle: TextStyle(color: Colors.red, fontWeight: FontWeight.bold)
                         ),
-                        hintText: "Pergunta",
-                        //errorText: errorQuestion ? "Ooops, something is not right!" : "",
-                        //errorStyle: TextStyle(color: Colors.red, fontWeight: FontWeight.bold)
-                      ),
-                      controller: questionEditingController
-                    ),
+                        controller: questionEditingController),
                     Padding(
                       padding: const EdgeInsets.only(top: 16.0),
                       child: TextField(
@@ -98,13 +97,9 @@ class AddCardWidgets {
                         ),
                       ),
                     ),
-                    ButtonAdd(context, (){
-                      Navigator.pop(context, Cards(
-                        question: questionEditingController.text
-                      ));
+                    ButtonAdd(context, () {
+                      Navigator.pop(context, Cards(question: questionEditingController.text));
                     }),
-
-
                   ],
                 ),
               ],
@@ -112,7 +107,6 @@ class AddCardWidgets {
           );
         });
   }
-
 
   Widget ButtonAdd(BuildContext context, Function() function) {
     return SizedBox(

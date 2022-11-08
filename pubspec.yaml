@@ -41,6 +41,7 @@ dependencies:
   intl: ^0.17.0
   yaml: ^3.1.1
   shrink_sidemenu: ^2.0.0+2-null-safety
+  awesome_dialog: ^3.0.2
 
 
 dev_dependencies:

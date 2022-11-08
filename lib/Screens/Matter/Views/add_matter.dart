@@ -40,6 +40,7 @@ class _AddMetterState extends State<AddMetter> {
             addMatterWigdet.ColorsWidgets(context),
             addMatterWigdet.AddCardbutton(context),
             addMatterWigdet.ResumWidget(context),
+            addMatterWigdet.BuildCards(context),
             addMatterWigdet.ButtonAdd(context, AddMatterController().SaveMatter(context, addMatterWigdet)),
           ],
         ),
